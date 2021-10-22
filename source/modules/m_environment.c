@@ -47,9 +47,9 @@
 #include "app_timer.h"
 #include "pca20020.h"
 #include "nrf_delay.h"
-#include "fstorage.h"
+#include "nrf_fstorage.h"
 #include "m_ui.h"
-#define  NRF_LOG_MODULE_NAME "m_env         "
+#define  NRF_LOG_MODULE_NAME m_env
 #include "nrf_log.h"
 #include "macros_common.h"
 

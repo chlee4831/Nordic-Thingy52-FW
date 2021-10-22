@@ -42,7 +42,7 @@
 #include "drv_hts221.h"
 #include "nrf_drv_gpiote.h"
 #include "app_scheduler.h"
-#define  NRF_LOG_MODULE_NAME "drv_humidity  "
+#define  NRF_LOG_MODULE_NAME drv_humidity
 #include "nrf_log.h"
 #include "macros_common.h"
 

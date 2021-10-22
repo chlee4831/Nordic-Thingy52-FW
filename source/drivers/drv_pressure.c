@@ -42,7 +42,7 @@
 #include "drv_lps22hb.h"
 #include "nrf_drv_gpiote.h"
 #include "app_scheduler.h"
-#define  NRF_LOG_MODULE_NAME "drv_pressure  "
+#define  NRF_LOG_MODULE_NAME drv_pressure
 #include "nrf_log.h"
 #include "macros_common.h"
 

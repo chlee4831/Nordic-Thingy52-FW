@@ -27,7 +27,7 @@
 ******************************************************************************/
 
 #include <stdio.h>
-#define  NRF_LOG_MODULE_NAME "lspquan       "
+#define  NRF_LOG_MODULE_NAME lspquan
 #include "nrf_log.h"
 #include "macros_common.h"
 #include "typedef.h"

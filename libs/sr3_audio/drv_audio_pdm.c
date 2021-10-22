@@ -36,14 +36,17 @@
   OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "nrf_assert.h"
 #include "nrf_error.h"
 #include "nrf_gpio.h"
 #include "nrf_drv_pdm.h"
+#include "app_util.h"
 //#include "app_debug.h"
 
 #include "drv_audio.h"
@@ -64,7 +67,9 @@ STATIC_ASSERT(IS_IO_VALID(CONFIG_IO_PDM_MIC_PWR_CTRL));
 STATIC_ASSERT(PDM_CONFIG_CLOCK_FREQ == NRF_PDM_FREQ_1032K);
 #define SAMPLING_RATE   (1032 * 1000 / 64)
 
-static int16_t                      m_pdm_buff[2][CONFIG_PDM_BUFFER_SIZE_SAMPLES];
+#define PDM_BUF_MAX     3
+static int16_t                      m_pdm_buff[PDM_BUF_MAX][CONFIG_PDM_BUFFER_SIZE_SAMPLES];
+static uint8_t                      m_pdm_buff_idx = 0;
 static drv_audio_buffer_handler_t   m_buffer_handler;
 static uint8_t                      m_skip_buffers;
 
@@ -98,27 +103,60 @@ ret_code_t drv_audio_disable(void)
     return nrf_drv_pdm_stop();
 }
 
-static void drv_audio_pdm_event_handler(uint32_t *p_buffer, uint16_t length)
+static void pdm_buff_clear(int16_t* buff, uint16_t size)
 {
-    ASSERT(length == CONFIG_PDM_BUFFER_SIZE_SAMPLES);
+    memset(buff, 0, size);
+}
 
-    if (m_skip_buffers)
+static int16_t *pdm_buff_manager()
+{
+    uint8_t idx = m_pdm_buff_idx;
+
+    m_pdm_buff_idx++;
+    if (m_pdm_buff_idx == PDM_BUF_MAX)
+        m_pdm_buff_idx = 0;
+
+    pdm_buff_clear(m_pdm_buff[idx], 2 * CONFIG_PDM_BUFFER_SIZE_SAMPLES);
+
+    return m_pdm_buff[idx];
+}
+
+static void drv_audio_pdm_event_handler(nrf_drv_pdm_evt_t const * const p_evt)
+{
+    uint32_t err_code;
+
+    int16_t *p_buffer_released = p_evt->buffer_released;
+
+    if (p_evt->buffer_requested)
     {
-        m_skip_buffers -= 1;
+        int16_t *p_buffer;
+
+        p_buffer = pdm_buff_manager();
+        if (p_buffer)
+        {
+            err_code = nrf_drv_pdm_buffer_set(p_buffer, CONFIG_PDM_BUFFER_SIZE_SAMPLES);
+            APP_ERROR_CHECK(err_code);
+        }
     }
-    else
+
+    if (p_buffer_released)
     {
-        m_buffer_handler((int16_t *)p_buffer, length);
+        if (m_skip_buffers)
+        {
+            m_skip_buffers -= 1;
+        }
+        else
+		{
+			m_buffer_handler(p_buffer_released);
+		}
     }
 }
 
 ret_code_t drv_audio_init(drv_audio_buffer_handler_t buffer_handler)
 {
-    nrf_drv_pdm_config_t pdm_cfg = NRF_DRV_PDM_DEFAULT_CONFIG(CONFIG_IO_PDM_CLK,
-                                                              CONFIG_IO_PDM_DATA,
-                                                              m_pdm_buff[0],
-                                                              m_pdm_buff[1],
-                                                              CONFIG_PDM_BUFFER_SIZE_SAMPLES);
+    ret_code_t err_code;
+	nrf_drv_pdm_config_t pdm_cfg = NRF_DRV_PDM_DEFAULT_CONFIG(CONFIG_IO_PDM_CLK,
+                                                              CONFIG_IO_PDM_DATA);
     if (buffer_handler == NULL)
     {
         return NRF_ERROR_INVALID_PARAM;

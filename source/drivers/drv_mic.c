@@ -45,7 +45,7 @@
 #include "drv_ext_gpio.h"
 #include "drv_mic.h"
 #include "app_util_platform.h"
-#define  NRF_LOG_MODULE_NAME "drv_mic       "
+#define  NRF_LOG_MODULE_NAME drv_mic
 #include "nrf_log.h"
 #include "macros_common.h"
 
@@ -54,7 +54,6 @@ STATIC_ASSERT(CONFIG_PDM_BUFFER_SIZE_SAMPLES == (1 * CONFIG_AUDIO_FRAME_SIZE_SAM
 typedef struct
 {
     int16_t  buf[CONFIG_PDM_BUFFER_SIZE_SAMPLES];
-    uint16_t samples;
     bool     free;
 }pdm_buf_t;
 
@@ -141,7 +140,7 @@ static void m_audio_process(void * p_event_data, uint16_t event_size)
 }
 
 
-static void m_audio_buffer_handler(int16_t *p_buffer, uint16_t samples)
+static void m_audio_buffer_handler(int16_t *p_buffer)
 {
     uint32_t     err_code;
     pdm_buf_t  * p_pdm_buf = NULL;
@@ -152,12 +151,8 @@ static void m_audio_buffer_handler(int16_t *p_buffer, uint16_t samples)
         if ( m_pdm_buf[i].free == true )
         {
             m_pdm_buf[i].free    = false;
-            m_pdm_buf[i].samples = samples;
 
-            for (uint32_t j = 0; j < samples; j++)
-            {
-                m_pdm_buf[i].buf[j] = p_buffer[j];
-            }
+			memcpy(m_pdm_buf[i].buf, p_buffer, 2 * CONFIG_PDM_BUFFER_SIZE_SAMPLES);
 
             p_pdm_buf = &m_pdm_buf[i];
             pdm_buf_addr = (uint32_t)&m_pdm_buf[i];

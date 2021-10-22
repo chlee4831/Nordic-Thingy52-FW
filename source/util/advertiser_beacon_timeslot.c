@@ -42,7 +42,7 @@
 #include "nrf_soc.h"
 #include "app_error.h"
 #include "app_util.h"
-#define  NRF_LOG_MODULE_NAME "adv_beacon_..."
+#define  NRF_LOG_MODULE_NAME adv_beacon
 #include "nrf_log.h"
 #include "macros_common.h"
 

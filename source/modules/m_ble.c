@@ -58,7 +58,7 @@
 #include "nrf_drv_rng.h"
 #include "support_func.h"
 
-#define  NRF_LOG_MODULE_NAME "m_ble         "
+#define  NRF_LOG_MODULE_NAME m_ble
 #include "nrf_log.h"
 #include "macros_common.h"
 

@@ -45,7 +45,7 @@
 #include "sdk_errors.h"
 #include "drv_ccs811.h"
 #include "drv_ccs811_bitfields.h"
-#define  NRF_LOG_MODULE_NAME "drv_gas_sensor"
+#define  NRF_LOG_MODULE_NAME drv_gas_sensor
 #include "nrf_log.h"
 #include "macros_common.h"
 

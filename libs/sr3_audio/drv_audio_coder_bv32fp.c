@@ -39,7 +39,7 @@
 #include <stdint.h>
 #include "nrf.h"
 #include "nrf_assert.h"
-#define  NRF_LOG_MODULE_NAME "drv_aud_cod..."
+#define  NRF_LOG_MODULE_NAME drv_aud_cod
 #include "nrf_log.h"
 #include "macros_common.h"
 #include "drv_audio.h"

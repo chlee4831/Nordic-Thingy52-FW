@@ -38,7 +38,7 @@
 
 #include "twi_manager.h"
 #include "nrf_error.h"
-#define  NRF_LOG_MODULE_NAME "twi_manager   "
+#define  NRF_LOG_MODULE_NAME twi_manager
 #include "nrf_log.h"
 #include "macros_common.h"
 

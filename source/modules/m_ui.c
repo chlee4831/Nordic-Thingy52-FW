@@ -49,7 +49,7 @@
 #include "app_scheduler.h"
 #include "app_timer.h"
 
-#define  NRF_LOG_MODULE_NAME "m_ui          "
+#define  NRF_LOG_MODULE_NAME m_ui
 #include "nrf_log.h"
 #include "macros_common.h"
 

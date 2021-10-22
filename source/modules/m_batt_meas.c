@@ -49,7 +49,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#define  NRF_LOG_MODULE_NAME "m_batt_meas   "
+#define  NRF_LOG_MODULE_NAME m_batt_meas
 #include "nrf_log.h"
 #include "macros_common.h"
 

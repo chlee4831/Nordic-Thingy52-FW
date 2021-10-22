@@ -46,7 +46,7 @@
 #include "app_scheduler.h"
 #include "twi_manager.h"
 
-#define  NRF_LOG_MODULE_NAME "drv_mpu9250   "
+#define  NRF_LOG_MODULE_NAME drv_mpu9250
 #include "nrf_log.h"
 #include "macros_common.h"
 

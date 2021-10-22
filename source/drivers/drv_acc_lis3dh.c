@@ -45,7 +45,7 @@
 #include "twi_manager.h"
 #include "nrf_gpio.h"
 #include "nrf_delay.h"
-#define  NRF_LOG_MODULE_NAME "drv_acc_lis3dh"
+#define  NRF_LOG_MODULE_NAME drv_acc_lis3dh
 #include "nrf_log.h"
 #include "macros_common.h"
 

@@ -107,7 +107,7 @@ static struct
     drv_sx1509_cfg_t const *p_cfg;
 } m_drv_sx1509;
 
-#define  NRF_LOG_MODULE_NAME "drv_sx1509    "
+#define  NRF_LOG_MODULE_NAME drv_sx1509
 #include "nrf_log.h"
 #include "macros_common.h"
 

@@ -42,7 +42,7 @@
 #include "drv_motion.h"
 #include "sdk_errors.h"
 #include "pca20020.h"
-#define  NRF_LOG_MODULE_NAME "m_motion      "
+#define  NRF_LOG_MODULE_NAME m_motion
 #include "nrf_log.h"
 #include "macros_common.h"
 

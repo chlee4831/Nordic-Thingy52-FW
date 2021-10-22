@@ -42,7 +42,7 @@
 #include "drv_speaker.h"
 #include "drv_mic.h"
 #include "ble_tss.h"
-#define  NRF_LOG_MODULE_NAME "m_sound       "
+#define  NRF_LOG_MODULE_NAME m_sound
 #include "nrf_log.h"
 #include "macros_common.h"
 

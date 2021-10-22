@@ -39,7 +39,7 @@
 #include "drv_hts221.h"
 #include "twi_manager.h"
 #include "nrf_error.h"
-#define  NRF_LOG_MODULE_NAME "drv_hts221    "
+#define  NRF_LOG_MODULE_NAME drv_hts221
 #include "nrf_log.h"
 #include "macros_common.h"
 

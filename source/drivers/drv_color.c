@@ -40,7 +40,7 @@
 #include "pca20020.h"
 #include "nrf_drv_gpiote.h"
 #include "app_scheduler.h"
-#define  NRF_LOG_MODULE_NAME "drv_color     "
+#define  NRF_LOG_MODULE_NAME drv_color
 #include "nrf_log.h"
 #include "macros_common.h"
 

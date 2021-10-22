@@ -52,7 +52,7 @@
    
 #elif defined EMPL_TARGET_NRF52
 #include "nrf_delay.h"
-#include "log.h"
+#include "nrf_log.h"
 #include "drv_mpu9250.h"
 
 #define i2c_write   drv_mpu9250_write

@@ -47,7 +47,7 @@
 
 #include <stdio.h>
 #include <math.h>
-#define  NRF_LOG_MODULE_NAME "a2lsp         "
+#define  NRF_LOG_MODULE_NAME a2lsp
 #include "nrf_log.h"
 #include "macros_common.h"
 #include "typedef.h"

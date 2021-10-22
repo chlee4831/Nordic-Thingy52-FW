@@ -52,7 +52,7 @@
 #include "drv_audio_config.h"
 
 /**@brief Audio buffer handler. */
-typedef void (*drv_audio_buffer_handler_t)(int16_t *p_buffer, uint16_t samples);
+typedef void (*drv_audio_buffer_handler_t)(int16_t *p_buffer);
 
 /**@brief Enable audio source.
  *

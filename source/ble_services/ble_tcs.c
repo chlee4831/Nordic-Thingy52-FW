@@ -53,7 +53,7 @@
 // EF68xxxx-9B35-4933-9B10-52FFA9740042
 #define TCS_BASE_UUID                  {{0x42, 0x00, 0x74, 0xA9, 0xFF, 0x52, 0x10, 0x9B, 0x33, 0x49, 0x35, 0x9B, 0x00, 0x00, 0x68, 0xEF}} /**< Used vendor specific UUID. */
 
-#define  NRF_LOG_MODULE_NAME "m_ble_tcs     "
+#define  NRF_LOG_MODULE_NAME m_ble_tcs
 #include "nrf_log.h"
 
 /**@brief Function for handling the @ref BLE_GAP_EVT_CONNECTED event from the S132 SoftDevice.

@@ -41,7 +41,7 @@
 #include "drv_sx1509.h"
 #include "app_util_platform.h"
 #include "nrf_delay.h"
-#define  NRF_LOG_MODULE_NAME "drv_ext_gpio  "
+#define  NRF_LOG_MODULE_NAME drv_ext_gpio
 #include "nrf_log.h"
 #include "macros_common.h"
 

@@ -62,7 +62,7 @@
 #define COMPASS_READ_MS  (500UL) ///< Default compass (magnetometer) period [ms].
 #define DEFAULT_MPU_HZ    (10UL) ///< Default motion processing unit period [ms].
 #define NUM_AXES             (3) ///< Number of principal axes for each sensor type.
-#define  NRF_LOG_MODULE_NAME "drv_motion    "
+#define  NRF_LOG_MODULE_NAME drv_motion
 #include "nrf_log.h"
 #include "macros_common.h"
 

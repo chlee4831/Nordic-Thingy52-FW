@@ -57,7 +57,7 @@
 #define POWER_SAVE_ON_TIME_MARGIN_PERCENT        40 /**< As there may be some clock drift between the master and IO extender, a margin is added.
                                                     This margin is in effect between when the IO extender ends a given light cycle,
                                                     and before the master turns off the IO extender oscillator for power saving.*/
-#define  NRF_LOG_MODULE_NAME "drv_ext_light "
+#define  NRF_LOG_MODULE_NAME drv_ext_light
 #include "nrf_log.h"
 #include "macros_common.h"
 

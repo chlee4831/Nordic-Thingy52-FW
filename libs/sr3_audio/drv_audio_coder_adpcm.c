@@ -42,7 +42,7 @@
 #include "nrf_assert.h"
 #include "drv_audio.h"
 #include "drv_audio_coder.h"
-#define  NRF_LOG_MODULE_NAME "drv_aud_adpcm "
+#define  NRF_LOG_MODULE_NAME drv_aud_adpcm
 #include "nrf_log.h"
 
 #if (CONFIG_AUDIO_CODEC == CONFIG_AUDIO_CODEC_ADPCM)

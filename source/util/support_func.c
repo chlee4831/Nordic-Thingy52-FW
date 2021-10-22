@@ -37,17 +37,18 @@
  */
 
 #include "support_func.h"
-#include "softdevice_handler.h"
+// #include "softdevice_handler.h"
 #include "sdk_errors.h"
 #include "nrf.h"
 #include <stdint.h>
 #include <stdbool.h>
-#define  NRF_LOG_MODULE_NAME "support_func  "
+#define  NRF_LOG_MODULE_NAME support_func
 #include "nrf_log.h"
 #include "nrf_delay.h"
 #include "pca20020.h"
 #include "drv_ext_gpio.h"
 #include "macros_common.h"
+#include "ble_gap.h"
 
 ret_code_t support_func_ble_mac_address_get(char * p_mac_addr)
 {

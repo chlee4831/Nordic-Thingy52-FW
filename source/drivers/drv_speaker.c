@@ -48,7 +48,7 @@
 #include "nrf_delay.h"
 #include "drv_ext_gpio.h"
 #include "sounds.h"
-#define  NRF_LOG_MODULE_NAME "drv_speaker   "
+#define  NRF_LOG_MODULE_NAME drv_speaker
 #include "nrf_log.h"
 #include "macros_common.h"
 
